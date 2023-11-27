@@ -1,4 +1,4 @@
-<template lang="">
+<template>
     <header>
         <h1 class="text-center py-4 fw-bold">Yu-Gi-Oh!</h1>
     </header>
