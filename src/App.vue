@@ -1,4 +1,5 @@
 <script>
+
 import axios from "axios";
 import AppHeader from "./components/AppHeader.vue";
 import {store} from "./store.js";
@@ -13,7 +14,7 @@ export default {
   created() {
     this.store.loading = true;
     axios.get(this.store.apiUrl).then((resp) => {
-      this.store.cardsArray = resp.data;
+      this.store.cardsArray = resp.data.data;
       this.store.loading = false;
     })
   },
@@ -28,15 +29,12 @@ export default {
 <template>
 
   <AppHeader />
-
-  <AppContent />
-
-  <AppFooter />
+  <CardsList />
 
 </template>
 
 <style lang="scss">
 
-  /*@use "./style/general.scss";*/
+  @use "./style/general.scss";
 
 </style>

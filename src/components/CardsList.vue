@@ -1,9 +1,9 @@
 <template>
     <div class="container">
-        
-        <div class="row">
-            <div class="col">
-
+        <AppLoader v-if="store.loading" />
+        <div class="row" v-else>
+            <div class="col" v-for="card in store.cardsArray" :key="card.id">
+                <AppCard :card="card" />
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@ export default {
             store,
         };
     },
-    components: {AppCard},
+    components: {AppCard, AppLoader},
 }
 </script>
 

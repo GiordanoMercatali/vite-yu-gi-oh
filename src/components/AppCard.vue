@@ -7,8 +7,12 @@ export default {
 </script>
 
 <template>
-  <div class="card mb-4 text-center">
-    
+  <div class="mb-4 text-center">
+    <!-- <img :src="card.image" alt="" /> -->
+    <h3>{{ card.name }}</h3>
+    <p class="text-primary">{{ card.type }}</p>
+    <p class="text-secondary">{{ card.race }}</p>
+    <p class="text-success">{{ card.attribute }}</p>
   </div>
 </template>
 
