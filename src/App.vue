@@ -11,8 +11,10 @@ export default {
     }
   },
   created() {
+    this.store.loading = true;
     axios.get(this.store.apiUrl).then((resp) => {
       this.store.cardsArray = resp.data;
+      this.store.loading = false;
     })
   },
   components: {
