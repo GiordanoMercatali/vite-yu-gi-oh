@@ -13,14 +13,23 @@ export default {
   },
   created() {
     this.store.loading = true;
-    axios.get(this.store.apiUrl).then((resp) => {
-      this.store.cardsArray = resp.data.data;
-      this.store.loading = false;
-    })
+    this.getCards();
+    // axios.get(this.store.apiUrl).then((resp) => {
+    //   this.store.cardsArray = resp.data.data;
+    //   this.store.loading = false;
+    // })
   },
   components: {
     AppHeader,
     CardsList,
+  },
+  methods: {
+    getCards(){
+        axios.get(this.store.apiUrl).then((resp) => {
+        this.store.cardsArray = resp.data.data;
+        this.store.loading = false;
+      });
+    }
   },
 };
 
