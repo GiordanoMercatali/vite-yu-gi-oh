@@ -15,14 +15,11 @@ export default {
   created() {
     this.store.loading = true;
     this.getCards();
-    // axios.get(this.store.apiUrl).then((resp) => {
-    //   this.store.cardsArray = resp.data.data;
-    //   this.store.loading = false;
-    // })
   },
   components: {
     AppHeader,
     CardsList,
+    AppSearch,
   },
   methods: {
     getCards(){
@@ -30,7 +27,18 @@ export default {
         this.store.cardsArray = resp.data.data;
         this.store.loading = false;
       });
-    }
+    },
+
+    searchArchetype() {
+      console.log(this.store.searchText);
+      axios.get(this.store.apiUrl, {
+          params: {
+            archetype: this.store.searchText,
+          },
+        }).then((resp) => {
+          this.store.cardsArray = resp.data.data;
+        });
+    },
   },
 };
 
@@ -39,6 +47,7 @@ export default {
 <template>
 
   <AppHeader />
+  <AppSearch @performSearch="searchArchetype" />
   <CardsList />
 
 </template>
